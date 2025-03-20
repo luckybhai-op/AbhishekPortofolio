@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Abhishek Aryan - Portfolio</title>
+    <style>
+        /* Importing Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@700&display=swap');
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            scroll-behavior: smooth;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.light-mode {
+            background-color: #f4f4f4;
+            color: #1a1a1a;
+        }
+
+        /* Flashing Nav Bar */
+        header {
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: flash 3s infinite;
+        }
+        @keyframes flash {
+            0% { background-color: #333; }
+            50% { background-color: #f39c12; }
+            100% { background-color: #333; }
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f39c12;
+        }
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .mode-toggle:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 50px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?tech') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hero h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f39c12;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+        .typed-text {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #292929;
+            text-align: center;
+            transition: background-color 0.5s;
+        }
+        body.light-mode .about {
+            background-color: #e0e0e0;
+        }
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            animation: slideIn 2s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            transition: background-color 0.5s;
+        }
+        body.light-mode .skills {
+            background-color: #f4f4f4;
+            color: #1a1a1a;
+        }
+        .skills h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .skill-box {
+            background-color: #333;
+            margin: 20px;
+            padding: 30px;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        body.light-mode .skill-box {
+            background-color: #fff;
+            color: #1a1a1a;
+        }
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .skill-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #292929;
+            text-align: center;
+            transition: background-color 0.5s;
+        }
+        body.light-mode .contact {
+            background-color: #e0e0e0;
+        }
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        body.light-mode .contact input, body.light-mode .contact textarea {
+            background-color: #fff;
+            color: #1a1a1a;
+        }
+        .contact input:focus, .contact textarea:focus {
+            outline: none;
+            background-color: #555;
+        }
+        .contact button {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            animation: slideUp 1.5s ease-in-out;
+            transition: background-color 0.5s;
+        }
+        body.light-mode footer {
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Abhishek Aryan</h1>
+            </div>
+            <div>
+                <a href="#about">About Me</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+                <button class="mode-toggle" onclick="toggleMode()">🌓</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to My Portfolio</h1>
+            <p>I create <span class="typed-text"></span></p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Me</h2>
+        <p>
+            Hi, I'm Abhishek Aryan, a passionate web and application developer. I specialize in crafting beautiful, responsive, and functional web experiences for clients around the globe.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript, React, Angular, Vue.js</p>
+            </div>
+            <div class="skill-box">
+                <h3>App Development</h3>
+                <p>Android, iOS, React Native, Flutter</p>
+            </div>
+            <div class="skill-box">
+                <h3>Backend Development</h3>
+                <p>Node.js, Python, Java, PHP, Databases</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Abhishek Aryan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Dark/Light Mode Toggle
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Typing Effect
+        const typedTextSpan = document.querySelector(".typed-text");
+        const textArray = ["websites", "applications", "digital experiences", "solutions"];
+        const typingDelay = 200;
+        const erasingDelay = 100;
+        const newTextDelay = 2000;
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay + 1100);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+</body>
+</html>
