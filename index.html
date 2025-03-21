@@ -3,123 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Abhishek Aryan - Portfolio</title>
+    <title>Abhishek's Portfolio</title>
     <style>
-        /* Importing Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@700&display=swap');
-        
-        /* Global Styles */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #0a0a0a;
             color: #ffffff;
-            scroll-behavior: smooth;
+            transition: all 0.5s ease-in-out;
         }
 
-        /* Navbar with Boxes */
+        /* Navbar */
         header {
-            background-color: #333;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            padding: 10px 20px;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: colorChange 5s infinite alternate;
         }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-box {
-            background-color: #444;
-            padding: 10px 20px;
+
+        /* Button */
+        .btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00);
+            padding: 15px 30px;
             border-radius: 10px;
-            margin: 0 10px;
+            border: none;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .nav-box:hover {
-            background-color: #f39c12;
-            transform: translateY(-5px);
-        }
-        .nav-box h2 {
             font-size: 1.2rem;
-            color: #fff;
-            margin: 0;
+            color: #000;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.5s;
+        }
+        .btn:hover {
+            background: linear-gradient(45deg, #ffcc00, #00ff00, #ff00ff);
+            transform: scale(1.1);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?tech') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
         }
         .hero h1 {
-            font-family: 'Roboto', sans-serif;
             font-size: 4rem;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            color: transparent;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: #f39c12;
         }
         .hero p {
             font-size: 1.5rem;
+            margin-top: 10px;
         }
 
-        /* Detailed Sections */
-        .detailed-section {
+        /* Explore Menu */
+        .explore-menu {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
             display: none;
-            padding: 100px 50px;
             text-align: center;
+            z-index: 1001;
         }
-        .detailed-section h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #f39c12;
+        .explore-menu h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
         }
-        .detailed-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .detailed-section ul {
-            list-style: none;
-            padding: 0;
-        }
-        .detailed-section ul li {
-            font-size: 1.1rem;
+        .menu-option {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00);
+            padding: 10px 20px;
+            border-radius: 8px;
             margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.5s;
+            font-weight: bold;
+            color: #000;
+        }
+        .menu-option:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ffcc00, #00ff00, #ff00ff);
         }
 
-        /* Contact Section */
-        .contact {
-            background-color: #292929;
-            text-align: center;
+        /* Sections */
+        .section {
             padding: 100px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #111, #222);
+            margin-top: 50px;
+            transition: background 1s;
+            border-radius: 20px;
+            box-shadow: 0px 0px 15px #ff00ff;
         }
-        .contact h2 {
+        .section:hover {
+            transform: scale(1.02);
+        }
+        .section h2 {
             font-size: 3rem;
-            margin-bottom: 30px;
-            color: #f39c12;
-        }
-        .contact p {
-            font-size: 1.2rem;
+            color: #ffcc00;
+            text-transform: uppercase;
             margin-bottom: 20px;
         }
-        .contact .email {
-            color: #f39c12;
-            cursor: pointer;
-            text-decoration: underline;
+        .section p {
+            font-size: 1.2rem;
+        }
+
+        /* Project Section */
+        .project-box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #00ffff;
+        }
+        .project-box h3 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .coming-soon {
+            color: #ff00ff;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -130,7 +155,7 @@
             color: #fff;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -138,110 +163,85 @@
             .hero p {
                 font-size: 1.2rem;
             }
-            .nav-box {
-                padding: 8px 15px;
-                margin: 0 5px;
-            }
-            .nav-box h2 {
-                font-size: 1rem;
-            }
-            .detailed-section {
-                padding: 50px 20px;
-            }
-            .detailed-section h2 {
-                font-size: 2rem;
-            }
-            .detailed-section p {
+            .btn {
+                padding: 10px 20px;
                 font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-box" onclick="showSection('about')">
-                <h2>About Me</h2>
-            </div>
-            <div class="nav-box" onclick="showSection('skills')">
-                <h2>Skills</h2>
-            </div>
-            <div class="nav-box" onclick="showSection('contact')">
-                <h2>Contact Me</h2>
-            </div>
-        </nav>
-    </header>
+
+    <!-- Navbar -->
+    <header>Abhishek's Portfolio</header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div>
             <h1>Welcome to My Portfolio</h1>
-            <p>I create websites and applications that bring ideas to life.</p>
+            <p>I create stunning websites with neon aesthetics.</p>
+            <button class="btn" onclick="showExploreMenu()">Explore</button>
         </div>
     </section>
 
-    <!-- Detailed About Section -->
-    <section class="detailed-section" id="about-details">
+    <!-- Explore Menu -->
+    <div class="explore-menu" id="exploreMenu">
+        <h3>Where do you want to go?</h3>
+        <div class="menu-option" onclick="navigateTo('about')">About Me</div>
+        <div class="menu-option" onclick="navigateTo('skills')">My Skills</div>
+        <div class="menu-option" onclick="navigateTo('projects')">My Done Projects</div>
+        <div class="menu-option" onclick="navigateTo('contact')">Contact</div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
         <h2>About Me</h2>
-        <p>
-            Hi, I'm Abhishek Aryan, a passionate web and application developer with over 5 years of experience. I specialize in creating beautiful, responsive, and functional websites and applications that bring ideas to life. Whether you need a personal portfolio, an e-commerce platform, or a custom web application, I’ve got you covered.
-        </p>
-        <h3>How to Enroll:</h3>
-        <ul>
-            <li>1. Share your project requirements via email or the contact form.</li>
-            <li>2. We’ll discuss your goals, timeline, and budget.</li>
-            <li>3. I’ll provide a detailed proposal and start working on your project.</li>
-        </ul>
+        <p>Hello! I'm Abhishek, a passionate developer specializing in modern web and app development.</p>
     </section>
 
-    <!-- Detailed Skills Section -->
-    <section class="detailed-section" id="skills-details">
+    <!-- Skills Section -->
+    <section class="section" id="skills">
         <h2>My Skills</h2>
-        <p>
-            I offer a wide range of services to help you achieve your goals. Here’s what I can do for you:
-        </p>
-        <ul>
-            <li>✅ Web Development: HTML, CSS, JavaScript, React, Angular, Vue.js</li>
-            <li>✅ App Development: Android, iOS, React Native, Flutter</li>
-            <li>✅ Backend Development: Node.js, Python, Java, PHP, Databases</li>
-        </ul>
-        <h3>How to Enroll:</h3>
-        <ul>
-            <li>1. Let me know which service you’re interested in.</li>
-            <li>2. We’ll discuss your project requirements in detail.</li>
-            <li>3. I’ll provide a timeline and cost estimate.</li>
-        </ul>
+        <p>HTML, CSS, JavaScript, Python, AI Development, and more.</p>
+    </section>
+
+    <!-- My Done Projects Section -->
+    <section class="section" id="projects">
+        <h2>My Done Projects</h2>
+
+        <div class="project-box">
+            <h3>Video Section</h3>
+            <p class="coming-soon">Coming Soon...</p>
+        </div>
+
+        <div class="project-box">
+            <h3>PDF Section</h3>
+            <p class="coming-soon">Coming Soon...</p>
+        </div>
+
     </section>
 
     <!-- Contact Section -->
-    <section class="contact detailed-section" id="contact-details">
+    <section class="section" id="contact">
         <h2>Contact Me</h2>
-        <p>Feel free to reach out for collaborations or inquiries:</p>
-        <p class="email" onclick="redirectToEmail()">abhishekaryan2008@gmail.com</p>
+        <p>Email: abhishekaryan2008@gmail.com</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2024 Abhishek Aryan. All Rights Reserved.</p>
+        <p>© 2025 Abhishek. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Show Detailed Sections
-        function showSection(section) {
-            document.querySelectorAll('.detailed-section').forEach(sec => {
-                sec.style.display = 'none';
-            });
-            document.querySelector(`#${section}-details`).style.display = 'block';
-            window.scrollTo({
-                top: document.querySelector(`#${section}-details`).offsetTop - 100,
-                behavior: 'smooth'
-            });
+        function showExploreMenu() {
+            document.getElementById('exploreMenu').style.display = 'block';
         }
 
-        // Redirect to Email
-        function redirectToEmail() {
-            window.location.href = "mailto:abhishekaryan2008@gmail.com";
+        function navigateTo(section) {
+            document.getElementById('exploreMenu').style.display = 'none';
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
         }
     </script>
+
 </body>
 </html>
